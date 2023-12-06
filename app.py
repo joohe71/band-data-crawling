@@ -34,7 +34,7 @@ def get_data():
 # 매일 오전 11시 25분 slack webhook 알림 
 schedule.every().monday.at("11:25").do(get_data)
 schedule.every().tuesday.at("11:25").do(get_data)
-schedule.every().wednesday.at("15:40").do(get_data)
+schedule.every().wednesday.at("16:00").do(get_data)
 schedule.every().thursday.at("11:25").do(get_data)
 
 
