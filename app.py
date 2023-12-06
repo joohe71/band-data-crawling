@@ -6,16 +6,6 @@ from datetime import datetime
 from urllib import request
 import os
 from dotenv import load_dotenv
-from flask import Flask
-
-app = Flask(__name__)
-
-@app.route('/')
-def hello():
-    return 'Hello, World!'
-
-if __name__ == "__main__":
-    app.run()
 
 load_dotenv()
 
@@ -37,13 +27,18 @@ def get_data():
     slack_res = requests.post(slack_hook_url,json={"text": f"<{result}|{today}>\n{content}" })
     # post 요청 함수 실행
     slack_res
+    print(f"{today} 실행")
 
 
-# # 매일 오전 11시 25분 slack webhook 알림 
-# schedule.every().day.at("14:30").do(get_data)
 
-# #무한 루프를 돌면서 스케쥴을 유지한다.
-# while True:
-#     schedule.run_pending()
-#     time.sleep(1)
+# 매일 오전 11시 25분 slack webhook 알림 
+schedule.every().monday.at("11:25").do(get_data)
+schedule.every().tuesday.at("11:25").do(get_data)
+schedule.every().wednesday.at("11:25").do(get_data)
+schedule.every().thursday.at("11:25").do(get_data)
 
+
+#무한 루프를 돌면서 스케쥴을 유지한다.
+while True:
+    schedule.run_pending()
+    time.sleep(1)
