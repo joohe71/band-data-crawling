@@ -22,8 +22,8 @@ def get_data():
     res = request.urlopen(req)
     decoded = res.read().decode("utf8")
     json_dict = json.loads(decoded)
-    result = json_dict["result_data"]["items"][0]["photos"][0]["url"]
-    content = json_dict["result_data"]["items"][0]["content"]
+    result = json_dict["result_data"]["items"][5]["photos"][0]["url"]
+    content = json_dict["result_data"]["items"][5]["content"]
     slack_res = requests.post(slack_hook_url,json={"text": f"<{result}|{today}>\n{content}" })
     # post 요청 함수 실행
     slack_res
@@ -34,7 +34,7 @@ def get_data():
 # 매일 오전 11시 25분 slack webhook 알림 
 schedule.every().monday.at("11:25").do(get_data)
 schedule.every().tuesday.at("11:25").do(get_data)
-schedule.every().wednesday.at("11:25").do(get_data)
+schedule.every().wednesday.at("15:40").do(get_data)
 schedule.every().thursday.at("11:25").do(get_data)
 
 
