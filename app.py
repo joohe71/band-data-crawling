@@ -30,7 +30,7 @@ def get_data():
 
 
 # 매일 오전 11시 25분 slack webhook 알림 
-schedule.every().day.at("13:50").do(get_data)
+schedule.every().day.at("14:15").do(get_data)
 
 #무한 루프를 돌면서 스케쥴을 유지한다.
 while True:
